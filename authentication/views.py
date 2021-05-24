@@ -13,7 +13,7 @@ def loginUser(request):
         user = authenticate(username=email_address, password=password)
         if user:
             login(request, user)
-            return redirect('authentication:register')
+            return redirect('main:home')
         else:
             messages.error(request, 'username or password not correct')
             return redirect('authentication:login')
@@ -32,7 +32,7 @@ def registerUser(request):
                                      first_name=first_name,
                                      last_name=last_name,
                                      password=password)
-            return redirect('account:login')
+            return redirect('main:home')
         else:
             messages.error(request, 'Email already registered')
             return redirect('authentication:register')
