@@ -1,8 +1,6 @@
-import os
-
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 # Create your views here.
 from cnn_model import compute_result
@@ -14,7 +12,6 @@ def home(request):
 
 
 def result(request):
-
     if request.method == 'POST':
 
         upload_directory = str(settings.MEDIA_ROOT) + "/" + str(request.user.id) + "/uploads/"
@@ -44,3 +41,13 @@ def result(request):
         }
 
         return render(request, 'main/result.html', context)
+
+
+def history(request):
+    if request.method == 'GET':
+        predictions = RoadExtraction.objects.filter(user=request.user)
+        print(predictions)
+        context = {
+            'predictions': predictions
+        }
+        return render(request, 'main/history.html', context)
