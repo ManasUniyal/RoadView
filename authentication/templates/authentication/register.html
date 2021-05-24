@@ -18,6 +18,18 @@
 
             <!-- Registration Form -->
             <div class="col-md-7 col-lg-6 ml-auto">
+
+                {% for message in messages %}
+
+                    <div class="alert alert-danger">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
                 <form action="{% url 'account:register' %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
