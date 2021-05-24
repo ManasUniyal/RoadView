@@ -5,7 +5,10 @@ from django.shortcuts import render, redirect
 
 def home(request):
     if request.method == 'GET':
-        return render(request, 'main/homepage.html')
+        if request.user.is_authenticated:
+            return render(request, 'main/homepage.html')
+        else:
+            return render(request, 'welcome/welcome.html')
 
 
 def result(request):
