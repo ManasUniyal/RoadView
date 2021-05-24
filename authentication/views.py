@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
@@ -39,3 +39,7 @@ def registerUser(request):
 
     return render(request, 'authentication/register.html')
 
+
+def logoutUser(request):
+    logout(request)
+    return redirect('main:home')
