@@ -86,5 +86,7 @@ footer {
     display: none;
 }
 
-
-
+#image{
+    height: 400px;
+    width: 500px;
+}

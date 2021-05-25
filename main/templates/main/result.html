@@ -4,29 +4,50 @@
 
 {% block content %}
 
-    <div class="jumbotron d-flex align-items-center white-background">
+    <div class=" d-flex align-items-center white-background mt-20">
         <div class="container">
-            <div class="card text-center">
-                <div class="card-header">
-                    Prediction
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <img class="m-3 card-img-top container justify-content-center img-responsive" id="image"
-                             src="{{ processed_image_url }}" alt="Card image cap">
+            <div class=" ">
+               <div class="flex flex-row justify-between mb-4 mt-4">
+                <h1 class="font-bebas-neue  text-4xl font-black flex flex-col leading-none dark:text-white text-gray-800 mb-2">
+                    Result
+                 
+                  </h1>
+                  <div class="flex flex-row justify-center align-items-center">
+                    <a class="font-bebas-neue text-center py-2 px-4 rounded-md bg-gray-900 text-gray-100 hover:bg-white hover:border-2 hover:border-gray-800 border-2 border-gray-800   transition ease-linear cursor-pointer"
+                    href="{% url 'main:home' %}" style="text-decoration: none;">Or Make Another Prediction</a>
+                  </div>
+
+               </div>
+            </div>
+                <div class="row border-2 rounded-md shadow-md p-2">
+                    <div class="col-md-6 border-r-2  ">
+                        <div class="flex flex-col justify-center">
+                            <h1 class="my-2 font-bebas-neue text-center text-lg font-medium flex flex-col leading-none dark:text-white text-gray-800 mb-2">
+                                Uploaded Satellite Image
+                              </h1>
+                            <img class="card-img-top container rounded-md justify-content-center img-responsive" id="image"
+                            src="{{ uploaded_image_url }}" alt="Card image cap">
+                        </div>
+                        
+                       
                     </div>
                     <div class="col-md-6 upload-block">
-                        <div class="card-body ">
-                            <div class="row align-items-center justify-content-center">
-                                <h1 style="white-space: pre-wrap;">Prediction: </h1>
-                                <a class="btn btn-primary btn-block btn-lg" style="margin-top:20px ;"
-                                   href="{% url 'main:home' %}">MAKE ANOTHER
-                                    PREDICTION</a>
-                            </div>
+                        <div class=" flex flex-col justify-center ">
+                            <h1 class="my-2 font-bebas-neue text-center text-lg font-medium flex flex-col leading-none dark:text-white text-gray-800 mb-2">
+                                Predict Image
+                               </h1>
+                          
+                                
+                             <img class="card-img-top container justify-content-center img-responsive" id="image"
+                             src="{{ processed_image_url }}" alt="Card image cap">
+                            
+
+                            
                         </div>
                     </div>
+                    
                 </div>
-            </div>
+                
         </div>
     </div>
 
