@@ -42,4 +42,4 @@ def registerUser(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('main:home')
+    return redirect('welcome:welcome')
