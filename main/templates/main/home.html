@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <div class="d-flex align-items-center mt-20 ">
+    <div class="d-flex align-items-center mt-20 mb-16">
         <div class="w-full px-2">
             <div class="  ">
                 
@@ -17,9 +17,34 @@
                           <!-- <span class="text-2xl"> the Storage ?</span> -->
                         </h1>
                         <p class="text-sm sm:text-base text-gray-700 dark:text-white mt-3">
-                            Road network is a required layer in a lot of mapping exercises, for example in Basemap preparation (critical for navigation), humanitarian aid, disaster management, transportation, and for a lot of other applications it is a critical component.
+                            Road View uses a machine learning model trained using U-Net architecture to make predictions. 
+                            U-Net is a convolutional neural network and it works well even with fewer training samples and 
+                            yields precise segmentation.
+                            <br>
+                            The output image is generated as a binary segmented image where the white pixels 
+                            represent the road and the black pixels represent other information.
                         </p>
+                        
+                        <form id="submit_image_form" method="POST" action="{% url 'main:result' %}"
+                        enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="row mt-4">
+                          <div class="col-md-6">
+                              <label class="btn w-full   py- rounded-md bg-gray-900 text-gray-100 hover:bg-gray-100 hover:border-1 hover:border-gray-900   transition ease-linear cursor-pointer">
+                                  Upload Image  <input id="img_upload" type="file" name="image" accept="image/*"
+                                                     hidden>
+                              </label>
+                          </div>
+                          <div class="col-md-6">
+                              
+                                  <button id="predict_btn" class="btn  w-full  py-2 rounded-md bg-gray-900 text-gray-100 hover:bg-gray-100 hover:border-1 hover:border-gray-900   transition ease-linear cursor-pointer hide">Predict</button>
+                           
+                          </div>
+                      </div>
+                  </form>
+                        
                         </div>
+
                         
                     </div>
                     <div class="col-md-6">
@@ -31,19 +56,8 @@
                             </div>
                             <div class="upload-block w-full  ">
                                 <div class="w-full">
-                                    <form id="submit_image_form" method="POST" action="{% url 'main:result' %}"
-                                          enctype="multipart/form-data">
-                                        {% csrf_token %}
-                                        <div class="row w-full  flex flex-row justify-center ">
-                                            <label class="btn w-9/12 ml-8  py-2 rounded-md bg-gray-900 text-gray-100 hover:bg-gray-100 hover:border-1 hover:border-gray-900   transition ease-linear cursor-pointer">
-                                                Upload Image  <input id="img_upload" type="file" name="image" accept="image/*"
-                                                                   hidden>
-                                            </label>
-                                        </div>
-                                    </form>
-                                    <div class="row predict_btn_prop w-full flex flex-row justify-center" >
-                                        <button id="predict_btn" class="btn  w-9/12 ml-8  py-2 rounded-md bg-gray-900 text-gray-100 hover:bg-gray-100 hover:border-1 hover:border-gray-900   transition ease-linear cursor-pointer hide">Predict</button>
-                                    </div>
+                                   
+                                    
                                 </div>
                             </div>
                         </div>
