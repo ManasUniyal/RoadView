@@ -32,7 +32,8 @@ def registerUser(request):
                                      first_name=first_name,
                                      last_name=last_name,
                                      password=password)
-            return redirect('main:home')
+            messages.success(request, 'Account created successfully')
+            return redirect('authentication:login')
         else:
             messages.error(request, 'Email already registered')
             return redirect('authentication:register')

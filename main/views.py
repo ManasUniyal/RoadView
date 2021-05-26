@@ -45,8 +45,7 @@ def result(request):
 
 def history(request):
     if request.method == 'GET':
-        predictions = RoadExtraction.objects.filter(user=request.user)
-        print(predictions)
+        predictions = RoadExtraction.objects.filter(user=request.user).order_by('-date_created')
         context = {
             'predictions': predictions
         }
